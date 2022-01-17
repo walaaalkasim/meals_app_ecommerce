@@ -1,0 +1,108 @@
+html {
+  font-family: "Comfortaa", cursive;
+  font-family: "Exo 2", sans-serif;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 1rem;
+}
+h1 {
+  text-align: center;
+}
+.categories_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  gap: 20px;
+  border: 5px solid white;
+  background-color: rgb(255, 255, 255);
+  font-family: "Comfortaa", cursive;
+  font-family: "Exo 2", sans-serif;
+  font-family: "Shadows Into Light", cursive;
+}
+.category_home {
+  border: 1px solid white;
+  background-color: rgb(214, 213, 213);
+  border-radius: 10px;
+  padding: 10px;
+}
+.img_category {
+  border-radius: 10px;
+}
+form {
+  margin-left: 37vw;
+}
+input,
+.search_btn {
+  border-right: none;
+  border-radius: 20px;
+  background-color: ghostwhite;
+  height: 5vh;
+}
+
+.cat_btn {
+  background-color: rgb(214, 213, 213);
+  border: 1px solid rgb(214, 213, 213);
+  border-radius: 10px;
+  width: 15vw;
+}
+.cat_btn:hover {
+  background-color: bisque;
+}
+.img_meals {
+  width: 15vw;
+  height: 20vh;
+  border-radius: 10px;
+}
+.meals_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  font-family: "Exo 2", sans-serif;
+  font-family: "Shadows Into Light", cursive;
+
+  gap: 10px;
+}
+.meal_style {
+  border: 1px solid white;
+  background-color: rgb(195, 227, 248);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.meals_btn {
+  background-color: rgb(245, 248, 247);
+  border-radius: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 15vw;
+  height: 5vh;
+}
+.meals_btn:hover {
+  background-color: rgb(221, 247, 253);
+}
+.meal_instructions {
+  font-size: 1.2rem;
+}
+.ingredients_section_container {
+  font-family: "Comfortaa", cursive;
+}
+.ingredients_measures_container {
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  display: grid;
+  grid-template-columns: 20vw 20vw;
+  padding: 20px;
+  width: 50vw;
+}
+.meal_instructions {
+  text-align: center;
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  padding: 15px;
+}
+.meal_header {
+  text-align: center;
+}
