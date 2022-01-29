@@ -1,20 +1,33 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MyContext from "../context/MyContext";
 import { useFetch } from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
+import SearchMeal from "./SearchMeal";
 
 const Category = () => {
   const context = useContext(MyContext);
-  const { handleCategory } = context;
-  const url = `https://www.themealdb.com/api/json/v1/1/categories.php`;
+  const { setCategory, auth } = context;
+  const url = `https://themealdb.com/api/json/v1/1/categories.php`;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    !auth && navigate("/");
+  }, [auth, navigate]);
 
   const { results, loading, error } = useFetch(url);
-  console.log(results);
 
   if (loading) return <p>loading ..</p>;
   if (error) return <p>{error}</p>;
 
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+    navigate("/meals");
+  };
+
   return (
-    <div>
+    <div className="cate-background">
+      <SearchMeal />
       <span className="categories_container">
         {results.categories.map((item, index) => (
           <div className="category_home" key={index}>
@@ -22,7 +35,7 @@ const Category = () => {
             <button
               className="cat_btn"
               value={item.strCategory}
-              onClick={(e) => handleCategory(e)}
+              onClick={handleCategory}
             >
               {" "}
               {item.strCategory}{" "}

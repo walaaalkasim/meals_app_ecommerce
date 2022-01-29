@@ -1,9 +1,18 @@
 import { useContext } from "react";
 import MyContext from "../context/MyContext";
+import { useNavigate } from "react-router-dom";
 
 const SearchMeal = () => {
   const context = useContext(MyContext);
-  const { handleChange, handleSubmit, input } = context;
+  const { setInput, handleChange, setSearch, input } = context;
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(input);
+    navigate("/searchResults");
+    setInput("");
+  };
 
   return (
     <form>
@@ -14,7 +23,7 @@ const SearchMeal = () => {
         value={input}
         onChange={(e) => handleChange(e)}
       />
-      <button className="search_btn" onClick={(e) => handleSubmit(e)}>
+      <button className="search_btn" onClick={handleSubmit}>
         search
       </button>
     </form>

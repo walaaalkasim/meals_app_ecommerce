@@ -7,32 +7,44 @@ const MyProvider = ({ children }) => {
   const [mealId, setMealID] = useState("");
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("");
+  const [cartItems, setCartItems] = useState([]);
+  console.log(mealId);
 
-  const handleCategory = (e) => {
-    setCategory(e.target.value);
-  };
-  const handleMealId = (e) => {
-    setMealID(e.target.value);
-  };
   const handleChange = (e) => {
     setInput(e.target.value);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSearch(input);
+  const USER = process.env.REACT_APP_USER;
+  const PASSWORD = process.env.REACT_APP_PASSWORD;
+  const [form, setForm] = useState({ user: "", password: "" });
+  const [auth, setAuth] = useState(false);
+  const handleFormInput = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    form.user === USER && form.password === PASSWORD
+      ? setAuth(true)
+      : setAuth(false);
 
-  console.log(mealId);
-
+    setForm({ user: "", password: "" });
+  };
   return (
     <MyContext.Provider
       value={{
-        handleCategory,
+        cartItems,
+        setCartItems,
+        setCategory,
+
+        auth,
+        handleFormInput,
+        handleFormSubmit,
+        form,
         category,
+        setInput,
+        setMealID,
         mealId,
-        handleMealId,
         handleChange,
-        handleSubmit,
+        setSearch,
         input,
         search,
       }}

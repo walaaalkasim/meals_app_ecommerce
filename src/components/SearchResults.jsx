@@ -1,13 +1,21 @@
 import { useContext } from "react";
 import MyContext from "../context/MyContext";
+import { useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
-
+import { useNavigate } from "react-router-dom";
+import priceMaking from "../helpers/priceMaking";
+import addToCart from "../helpers/addToCart";
 const SearchResults = () => {
   const context = useContext(MyContext);
-  const { handleMealId, search } = context;
+  const { auth, search, cartItems, setCartItems } = context;
   const { results, loading, error } = useFetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
+    `https://themealdb.com/api/json/v1/1/search.php?s=${search}`
   );
+  const navigate = useNavigate();
+  useEffect(() => {
+    !auth && navigate("/");
+  }, [auth, navigate]);
+
   console.log(results);
   if (loading) return <p>loading ..</p>;
   if (error) return <p>{error}</p>;
@@ -22,10 +30,17 @@ const SearchResults = () => {
             <button
               className="meals_btn"
               value={item.idMeal}
-              onClick={(e) => handleMealId(e)}
+              onClick={(e) => navigate(`/ingredients/${e.target.value}`)}
             >
               {item.strMeal}
+            </button>{" "}
+            <button
+              className="meals_btn"
+              onClick={() => addToCart(item, cartItems, setCartItems)}
+            >
+              add to cart
             </button>
+            <button>price : {priceMaking(item.idMeal / 10000)}$</button>
           </div>
         ))}
       </div>
