@@ -35,7 +35,7 @@ const Meals = () => {
               {item.strMeal}
             </button>
             <button
-              className="meals_btn"
+              className="return-btn"
               onClick={() => addToCart(item, cartItems, setCartItems)}
             >
               add to cart
