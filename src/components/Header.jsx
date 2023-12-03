@@ -7,11 +7,11 @@ import Nav from "./Nav";
 const Header = () => {
   return (
     <header>
+   
       <Link to="/category">
         <h2 className="home-btn">Home</h2>
       </Link>
-      <LoginForm />
-
+      {/* <LoginForm /> */}
       <Nav />
     </header>
   );

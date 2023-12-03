@@ -8,16 +8,14 @@ import addToCart from "../helpers/addToCart";
 
 const Ingredients = () => {
   const context = useContext(MyContext);
-  const { auth, cartItems, setCartItems } = context;
+  const {  cartItems, setCartItems } = context;
   const { id } = useParams();
   const urlIng = `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
   const { results, loading, error } = useFetch(urlIng);
 
   console.log(results);
   const navigate = useNavigate();
-  useEffect(() => {
-    !auth && navigate("/");
-  }, [auth, navigate]);
+ 
   if (loading) return <p>loading ..</p>;
   if (error) return <p>{error}</p>;
   if (results.meals[0].length === 0) return;

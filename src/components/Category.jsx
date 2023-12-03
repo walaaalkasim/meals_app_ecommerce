@@ -6,14 +6,12 @@ import SearchMeal from "./SearchMeal";
 
 const Category = () => {
   const context = useContext(MyContext);
-  const { setCategory, auth } = context;
+  const { setCategory } = context;
   const url = `https://themealdb.com/api/json/v1/1/categories.php`;
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    !auth && navigate("/");
-  }, [auth, navigate]);
+  
 
   const { results, loading, error } = useFetch(url);
 

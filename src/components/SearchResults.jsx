@@ -7,14 +7,12 @@ import priceMaking from "../helpers/priceMaking";
 import addToCart from "../helpers/addToCart";
 const SearchResults = () => {
   const context = useContext(MyContext);
-  const { auth, search, cartItems, setCartItems } = context;
+  const { search, cartItems, setCartItems } = context;
   const { results, loading, error } = useFetch(
     `https://themealdb.com/api/json/v1/1/search.php?s=${search}`
   );
   const navigate = useNavigate();
-  useEffect(() => {
-    !auth && navigate("/");
-  }, [auth, navigate]);
+ 
 
   console.log(results);
   if (loading) return <p>loading ..</p>;

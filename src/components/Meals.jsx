@@ -7,16 +7,14 @@ import priceMaking from "../helpers/priceMaking";
 import addToCart from "../helpers/addToCart";
 const Meals = () => {
   const context = useContext(MyContext);
-  const { auth, category, cartItems, setCartItems } = context;
+  const {  category, cartItems, setCartItems } = context;
 
   const urlCat = `https://themealdb.com/api/json/v1/1/filter.php?c=${category}`;
   const { results, loading, error } = useFetch(urlCat);
   console.log(useFetch(urlCat));
 
   const navigate = useNavigate();
-  useEffect(() => {
-    !auth && navigate("/");
-  }, [auth, navigate]);
+
   if (loading) return <p>loading ..</p>;
   if (error) return <p>{error}</p>;
 

@@ -4,11 +4,10 @@ import MyContext from "../context/MyContext";
 
 const Nav = () => {
   const context = useContext(MyContext);
-  const { auth } = context;
   return (
     <>
       <nav>
-        {auth && (
+        { (
           <ul>
             <NavLink
               to="/category"

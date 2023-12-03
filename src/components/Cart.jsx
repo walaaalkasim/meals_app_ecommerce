@@ -11,11 +11,9 @@ import removeItem from "../helpers/removeItem";
 
 const Cart = () => {
   const context = useContext(MyContext);
-  const { auth, cartItems, setCartItems } = context;
+  const {  cartItems, setCartItems } = context;
   const navigate = useNavigate();
-  useEffect(() => {
-    !auth && navigate("/");
-  }, [auth, navigate]);
+
   const itemSum = calculateItemSum(cartItems);
 
   if (cartItems.length === 0)

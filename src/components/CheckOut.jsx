@@ -9,11 +9,9 @@ import calculateTotal from "../helpers/calculateTotal";
 
 const Checkout = () => {
   const context = useContext(MyContext);
-  const { auth, cartItems, setCartItems } = context;
+  const {  cartItems, setCartItems } = context;
   const navigate = useNavigate();
-  useEffect(() => {
-    !auth && navigate("/");
-  }, [auth, navigate]);
+ 
   const itemSum = calculateItemSum(cartItems);
   const Total = calculateTotal(cartItems);
 

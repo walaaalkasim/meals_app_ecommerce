@@ -13,7 +13,7 @@ const MyProvider = ({ children }) => {
   const handleChange = (e) => {
     setInput(e.target.value);
   };
-  const USER = process.env.REACT_APP_USER;
+ const USER = process.env.REACT_APP_USER;
   const PASSWORD = process.env.REACT_APP_PASSWORD;
   const [form, setForm] = useState({ user: "", password: "" });
   const [auth, setAuth] = useState(false);
@@ -23,7 +23,7 @@ const MyProvider = ({ children }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     form.user === USER && form.password === PASSWORD
-      ? setAuth(true)
+     ? setAuth(true)
       : setAuth(false);
 
     setForm({ user: "", password: "" });
@@ -35,11 +35,11 @@ const MyProvider = ({ children }) => {
         setCartItems,
         setCategory,
 
-        auth,
-        handleFormInput,
-        handleFormSubmit,
-        form,
-        category,
+      //   auth,
+       //  handleFormInput,
+       //  handleFormSubmit,
+      //  form,
+       category,
         setInput,
         setMealID,
         mealId,
